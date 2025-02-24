@@ -1,0 +1,47 @@
+{
+  "socialProfiles": [
+    {
+      "id": 1,
+      "platform": "youtube",
+      "username": "PewDiePie",
+      "displayName": "PewDiePie",
+      "profileImageUrl": "https://res.cloudinary.com/ddrpysog2/image/upload/v1740382733/ct9bbzodui50xeecql38.jpg",
+      "description": "Welcome to my channel! I make videos.",
+      "subscriberCount": 111000000,
+      "viewCount": 28000000000,
+      "rank": "A+",
+      "estimatedEarnings": "50K - 800K USD/Month",
+      "historicalSubscriberData": [  
+        {"date": "2023-10-26", "subscribers": 111000000},
+        {"date": "2023-10-25", "subscribers": 110990000},
+        {"date": "2023-10-24", "subscribers": 110980000},
+        {"date": "2023-10-23", "subscribers": 110970000},
+        {"date": "2023-10-22", "subscribers": 110960000},
+        {"date": "2023-10-21", "subscribers": 110950000},
+        {"date": "2023-10-20", "subscribers": 110940000}
+      ]
+    },
+    {
+      "id": 2,
+      "platform": "twitch",
+      "username": "xQcOW",
+      "displayName": "xQcOW",
+      "profileImageUrl": "https://res.cloudinary.com/ddrpysog2/image/upload/v1740386047/cb0jp9bal9mrmjxf8tyt.jpg",
+      "description": "Variety streamer.",
+      "followerCount": 12000000,
+      "totalViews": 900000000,
+      "rank": "S",
+      "estimatedEarnings": "10K - 150K USD/Month",
+      "historicalFollowerData": [ 
+        {"date": "2023-10-26", "followers": 12000000},
+        {"date": "2023-10-25", "followers": 11990000},
+        {"date": "2023-10-24", "followers": 11980000},
+        {"date": "2023-10-23", "followers": 11970000},
+        {"date": "2023-10-22", "followers": 11960000},
+        {"date": "2023-10-21", "followers": 11950000},
+        {"date": "2023-10-20", "followers": 11940000}
+      ]
+    }
+    
+  ]
+}
