@@ -1,6 +1,7 @@
-import { FaYoutube, FaTwitch, FaInstagram } from "react-icons/fa";
+import { FaYoutube, FaTwitch, FaInstagram } from "react-icons/fa"; 
 
 const ProfileCard = ({ profile, onClick }) => {
+// Function to Get Platform-Specific Icon
   const getPlatformIcon = (platform) => {
     switch (platform) {
       case "YouTube": return <FaYoutube className="text-red-500 text-xl" />;
@@ -20,6 +21,7 @@ const ProfileCard = ({ profile, onClick }) => {
             {getPlatformIcon(profile.platform)} {profile.platform}
           </p>
           <p className="text-gray-700">Subscribers/Fans: {profile.subscriberCount || profile.followerCount}</p>
+          {/* Subscriber/Followers Count */}
         </div>
       </div>
     </div>

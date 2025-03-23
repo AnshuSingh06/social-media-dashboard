@@ -5,12 +5,12 @@ import { searchProfiles } from "../Services/api";
 import '../css/Home.css';
 
 const Home = () => {
-  const [profiles, setProfiles] = useState([]); // ✅ Store multiple profiles
+  const [profiles, setProfiles] = useState([]); //  Store multiple profiles
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ Get search query from URL
+  // Extract Search Query from URL
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("search");
   const [searched, setSearched] = useState(false);
@@ -24,16 +24,17 @@ const Home = () => {
 
   const handleSearch = async (query) => {
     if (!query.trim()) return;
+    // If the search query is empty, the function returns early.
     setLoading(true);
   
     try {
       const results = await searchProfiles(query);
       
-      // ✅ Find exact match instead of taking the first one
+      // Find exact match instead of taking the first one
       const exactMatch = results.find(profile => profile.username.toLowerCase() === query.toLowerCase());
   
       if (exactMatch) {
-        setProfiles([exactMatch]); // ✅ Store only the selected profile
+        setProfiles([exactMatch]); //  Store only the selected profile
       } else {
         setProfiles([]); // No match found
       }
@@ -65,7 +66,7 @@ const Home = () => {
       </div><br/>
 
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-        {/* ✅ Table to Display Search Results */}
+        {/*  Table to Display Search Results */}
         <div className="table-container mt-6 w-full max-w-5xl bg-white p-6 shadow-lg rounded-lg">
   {loading ? (
     <p className="text-center text-blue-500 font-semibold">Searching...</p>

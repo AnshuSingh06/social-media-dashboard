@@ -5,13 +5,17 @@ const ProfilePage = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
 
+// Fetching Profile Data on Component Mount
   useEffect(() => {
     getProfileById(id).then(setProfile);
   }, [id]);
 
-  if (!profile) return <p>Loading...</p>;
+  if (!profile) return <p>Loading...</p>; //Handling Loading State
 
+  //Extracting Historical Data
   const historicalData = profile.historicalSubscriberData || profile.historicalFollowerData;
+
+  //Preparing Chart Data
   const chartData = {
     labels: historicalData.map((data) => data.date),
     datasets: [

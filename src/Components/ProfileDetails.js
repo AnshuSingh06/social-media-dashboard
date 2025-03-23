@@ -10,18 +10,19 @@ import {
   CartesianGrid,
 } from "recharts";
 import { getProfileById } from "../Services/api";
-import Historicalchart from "./Historicalchart"; // ✅ Import Historicalchart
-import PNavbar from "../Common/PNavbar";
+import Historicalchart from "./Historicalchart"; // Import Historicalchart
+import HNavbar from "../Common/HNavbar";
 import "../css/profileDetails.css";
 
 const ProfileDetails = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
-  const [error, setError] = useState(false); // ✅ Track errors
-  const [loading, setLoading] = useState(true); // ✅ Track loading state
+  const [error, setError] = useState(false); //  Track errors
+  const [loading, setLoading] = useState(true); //  Track loading state
 
+  // Fetch Profile Data on Component Mount
   useEffect(() => {
-    let isMounted = true; // ✅ Prevent state update after unmount
+    let isMounted = true; //  Prevent state update after unmount
 
     getProfileById(id)
       .then((data) => {
@@ -44,10 +45,11 @@ const ProfileDetails = () => {
       });
 
     return () => {
-      isMounted = false; // ✅ Cleanup function
+      isMounted = false; //  Cleanup function
     };
   }, [id]);
 
+  //Handle Loading and Error States
   if (loading) {
     return (
       <div className="text-center text-blue-500 font-bold mt-10">Loading...</div>
@@ -62,7 +64,7 @@ const ProfileDetails = () => {
     );
   }
 
-  // 🔹 Determine historical data key & data key dynamically
+  // Process Historical Data for Charts
   const historicalDataKey =
     profile.platform === "youtube"
       ? "historicalSubscriberData"
@@ -73,7 +75,7 @@ const ProfileDetails = () => {
 
   const historicalData = profile[historicalDataKey] || [];
 
-  // 🔹 Get min & max values for dynamic Y-axis scaling
+  // Determine Min & Max Values for the Y-Axis
   const minValue =
     historicalData.length > 0
       ? Math.min(...historicalData.map((d) => d[dataKey] || 0))
@@ -83,7 +85,7 @@ const ProfileDetails = () => {
       ? Math.max(...historicalData.map((d) => d[dataKey] || 0))
       : 1000;
 
-  // 🔹 Function to format Y-axis values dynamically (Millions, Thousands)
+  // Function to format Y-axis values dynamically (Millions, Thousands)
   const formatYAxis = (value) => {
     if (value >= 1e6) return `${(value / 1e6).toFixed(1)}M`;
     if (value >= 1e3) return `${(value / 1e3).toFixed(1)}K`;
@@ -92,7 +94,7 @@ const ProfileDetails = () => {
 
   return (
     <>
-      <PNavbar />
+      <HNavbar/>
       <div className="profile-container">
         {/* Profile Header */}
         <div className="profile-header">
@@ -106,7 +108,7 @@ const ProfileDetails = () => {
             className="profile-image"
             onError={(e) => {
               e.target.src = "https://via.placeholder.com/150";
-            }} // ✅ Fallback image
+            }} //  Fallback image
           />
           <div className="profile-info">
             <h2>{profile.displayName || "N/A"}</h2>
@@ -128,7 +130,7 @@ const ProfileDetails = () => {
           </div>
         </div>
 
-        {/* 🔹 Line Chart (Follower Growth) */}
+        {/*  Line Chart (Follower Growth) */}
         <div className="chart-container large-chart">
           <h3>Follower Growth Over Time</h3>
           {historicalData.length > 0 ? (
@@ -152,7 +154,7 @@ const ProfileDetails = () => {
           )}
         </div>
 
-        {/* 🔹 Bar Chart (Historical Data) */}
+        {/*  Bar Chart (Historical Data) */}
         <div className="chart-container large-chart">
           <h3>Historical Data</h3>
           <Historicalchart data={historicalData} dataKey={dataKey} />

@@ -11,7 +11,7 @@ const ProfileList = ({ profiles, onSelect }) => {
   return (
     <div className="grid grid-cols-3 gap-4">
       {profiles.map((profile) => (
-        // <ProfileCard key={profile.id} profile={profile} onSelect={() => onSelect(profile.id)} />
+        
         <ProfileCard profile={profile} onClick={() => handleProfileClick(profile)} />
 
       ))}
